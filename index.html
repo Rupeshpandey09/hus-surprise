@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love ❤</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+    <style>
+        :root {
+            --primary: #ff6b8b;
+            --secondary: #ffa5b4;
+            --accent: #ffdd59;
+            --dark: #1a1a2e;
+            --light: #fef6e4;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        .dancing-font {
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            transform: rotate(45deg);
+            animation: float 15s infinite ease-in-out;
+            opacity: 0.7;
+        }
+        
+        .heart:before,
+        .heart:after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+            position: absolute;
+        }
+        
+        .heart:before {
+            top: -10px;
+            left: 0;
+        }
+        
+        .heart:after {
+            top: 0;
+            left: -10px;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: rotate(45deg) translateY(0) scale(1);
+            }
+            50% {
+                transform: rotate(45deg) translateY(-20px) scale(1.1);
+            }
+        }
+        
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 30px;
+        }
+        
+        .photo-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 300px;
+        }
+        
+        .photo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--secondary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 10px;
+        }
+
+        /* Gift Boxes Styles */
+        .gift-boxes {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .gift-box {
+            width: 120px;
+            height: 120px;
+            background: #ffdd59;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transform-style: preserve-3d;
+        }
+
+        .gift-box:hover {
+            transform: translateY(-10px) rotateY(15deg);
+        }
+
+        .gift-box:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 20px;
+            background: #f1c40f;
+            top: 0;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .gift-box:after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #e74c3c;
+            top: -15px;
+            border-radius: 50%;
+        }
+
+        .gift-box-content {
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            max-width: 90%;
+            z-index: 100;
+            display: none;
+        }
+
+        .gift-box-content.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+            to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+        
+        .love-letter {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 40px auto;
+            position: relative;
+        }
+        
+        .love-letter::before {
+            content: "💌";
+            position: absolute;
+            top: 0;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transform: translateY(-50%);
+        }
+        
+        .music-player {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 20px;
+            padding: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            color: white;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero text-white relative overflow-hidden">
+        <div class="absolute inset-0 overflow-hidden" id="hearts-container"></div>
+        <div class="z-10 text-center px-4">
+            <h1 id="main-title" class="dancing-font text-5xl md:text-7xl font-bold mb-6">Happy Birthday</h1>
+            <div id="name-display" class="dancing-font text-4xl md:text-5xl mb-8"></div>
+            <p class="text-xl md:text-2xl mb-8" id="typed-text"></p>
+            
+            <!-- Gift Boxes Section -->
+            <div class="mt-12">
+                <h3 class="dancing-font text-3xl mb-6">Open Your Gifts</h3>
+                <div class="gift-boxes">
+                    <div class="gift-box" onclick="showGiftContent(1)">
+                        <span class="dancing-font text-xl">1</span>
+                        <div class="gift-box-content" id="gift1-content">
+                            <h4 class="text-lg font-bold mb-2">My Wish For You</h4>
+                            <p class="text-gray-700">May your year be filled with joy, laughter, and all the happiness you bring to others!</p>
+                            <button class="mt-4 px-4 py-2 bg-pink-500 text-white rounded-full" onclick="hideGiftContent(1)">Close</button>
+                        </div>
+                    </div>
+                    <div class="gift-box" onclick="showGiftContent(2)">
+                        <span class="dancing-font text-xl">2</span>
+                        <div class="gift-box-content" id="gift2-content">
+                            <h4 class="text-lg font-bold mb-2">Special Message</h4>
+                            <p class="text-gray-700">You're the most beautiful person I know - inside and out. Your kindness brightens every room.</p>
+                            <button class="mt-4 px-4 py-2 bg-pink-500 text-white rounded-full" onclick="hideGiftContent(2)">Close</button>
+                        </div>
+                    </div>
+                    <div class="gift-box" onclick="showGiftContent(3)">
+                        <span class="dancing-font text-xl">3</span>
+                        <div class="gift-box-content" id="gift3-content">
+                            <h4 class="text-lg font-bold mb-2">Memories</h4>
+                            <p class="text-gray-700">Remember our first date? I knew then I wanted to spend my life making you smile.</p>
+                            <button class="mt-4 px-4 py-2 bg-pink-500 text-white rounded-full" onclick="hideGiftContent(3)">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button id="scroll-down" class="bg-white text-pink-600 px-8 py-3 rounded-full font-bold hover:bg-pink-100 transition duration-300 transform hover:scale-105 mt-8">
+                Explore More
+            </button>
+        </div>
+    </section>
+    
+    <!-- Cartoon Gallery -->
+    <section class="py-16 bg-gradient-to-b from-pink-50 to-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 dancing-font">Our Love Story</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Cartoon 1 -->
+                <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                    <div class="text-6xl mb-3">💑</div>
+                    <h3 class="text-lg font-bold text-pink-600">First Date</h3>
+                </div>
+                <!-- Cartoon 2 -->
+                <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                    <div class="text-6xl mb-3">🌹</div>
+                    <h3 class="text-lg font-bold text-pink-600">Romantic Moments</h3>
+                </div>
+                <!-- Cartoon 3 -->
+                <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                    <div class="text-6xl mb-3">🎂</div>
+                    <h3 class="text-lg font-bold text-pink-600">Special Celebrations</h3>
+                </div>
+                <!-- Cartoon 4 -->
+                <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                    <div class="text-6xl mb-3">❤️</div>
+                    <h3 class="text-lg font-bold text-pink-600">Endless Love</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Love Quotes -->
+    <section class="py-16 bg-gradient-to-b from-white to-pink-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 dancing-font">What You Mean To Me</h2>
+            <div class="max-w-3xl mx-auto">
+                <div class="quote-container bg-white p-8 rounded-xl shadow-lg mb-8 relative">
+                    <div class="text-6xl text-pink-200 absolute top-0 left-4">"</div>
+                    <p class="text-xl italic text-pink-800 pl-10">Every moment with you feels like a beautiful dream I never want to wake up from.</p>
+                    <div class="text-6xl text-pink-200 absolute bottom-0 right-4">"</div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="quote-card bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                        <p class="text-lg italic text-gray-700 mb-4">"Your smile brightens even the gloomiest of my days."</p>
+                    </div>
+                    <div class="quote-card bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                        <p class="text-lg italic text-gray-700 mb-4">"I fall in love with you more each day, even when I didn't think it was possible."</p>
+                    </div>
+                    <div class="quote-card bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                        <p class="text-lg italic text-gray-700 mb-4">"You're not just my love, you're my home."</p>
+                    </div>
+                    <div class="quote-card bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+                        <p class="text-lg italic text-gray-700 mb-4">"The way you understand me without words is magic."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Our Timeline -->
+    <section class="py-16 bg-gradient-to-b from-pink-50 to-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16 dancing-font relative">
+                Our Love Story
+                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-pink-400 rounded-full"></div>
+                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-1 w-16 h-1 bg-pink-300 rounded-full opacity-70"></div>
+            </h2>
+            <div class="timeline">
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center mr-3">
+                                <span class="text-pink-500 text-xl">❤️</span>
+                            </div>
+                            <h3 class="font-bold text-xl text-pink-600">The Day We Met</h3>
+                        </div>
+                        <div class="text-pink-400 my-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" viewBox="0 0 256 256">
+                                <path d="M232,128a104,104,0,1,0-178,71.9l-6.1,6.1a8,8,0,0,0,11.3,11.3l6.1-6.1A104,104,0,0,0,232,128Z"></path>
+                            </svg>
+                        </div>
+                        <p class="text-gray-600">That magical moment when our eyes first met. I didn't know it then, but I was meeting my soulmate. The universe brought us together in the most unexpected way.</p>
+                        <p class="text-sm text-pink-400 font-medium mt-3">December, 2023</p>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3 class="font-bold text-lg text-pink-600">First Date</h3>
+                        <p class="text-gray-600">Pizza and chawming in train.</p>
+                        <p class="text-sm text-gray-400 mt-2">July 3, 2022</p>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3 class="font-bold text-lg text-pink-600">First "I Love You"</h3>
+                        <p class="text-gray-600">It slipped out naturally, like it had been waiting to be said our whole lives.</p>
+                        <p class="text-sm text-gray-400 mt-2">January 1, 2025</p>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 4 -->
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3 class="font-bold text-lg text-pink-600">First Trip together</h3>
+                        <p class="text-gray-600">Two weeks away just confirmed what I already knew - I never want to be anywhere without you.</p>
+                        <p class="text-sm text-gray-400 mt-2">July 28, 2025</p>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 5 -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3 class="font-bold text-lg text-pink-600">Today</h3>
+                        <p class="text-gray-600">Every day with you is a gift, and today I celebrate the most precious gift of all - you.</p>
+                        <p class="text-sm text-gray-400 mt-2">Present</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Love Letter -->
+    <section class="py-16 bg-gradient-to-b from-white to-pink-50">
+        <div class="container mx-auto px-4">
+            <div class="love-letter">
+                <div class="text-center mb-6">
+                    <h2 class="text-3xl font-bold dancing-font text-pink-600">To The Love of My Life</h2>
+                    <div class="w-20 h-1 bg-pink-400 mx-auto my-4"></div>
+                </div>
+                <div class="letter-content">
+                    <p class="mb-4">My Dearest,</p>
+                    <p class="mb-4">As I sit here writing this, I'm overwhelmed with gratitude for having you in my life. On this special day that marks your entrance into this world, I want you to know how profoundly you've changed mine.</p>
+                    <p class="mb-4">Every laugh we've shared, every challenge we've faced together, every quiet moment of understanding - they've all woven together to create this beautiful life we're building. Your kindness, your strength, your humor, and your beautiful soul make every day brighter.</p>
+                    <p class="mb-4">I promise to keep cherishing you, supporting you, and loving you more each day than the one before. I promise to be your partner in adventures, your comfort in hard times, and your biggest cheerleader always.</p>
+                    <p class="mb-4">Happy birthday to the woman who makes my world go round. May this year bring you as much joy as you bring to everyone around you, especially me.</p>
+                    <p class="mt-6">With all my love, forever and always,</p>
+                    <p class="dancing-font text-2xl text-pink-600 mt-2">Yours</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Music Player -->
+    <section class="py-16 bg-gradient-to-b from-pink-50 to-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 dancing-font">Our Songs</h2>
+            <div class="music-player">
+                <div class="text-center mb-6">
+                    <h3 id="song-title" class="text-2xl font-bold">Perfect</h3>
+                    <p id="song-artist" class="text-pink-100">Ed Sheeran</p>
+                </div>
+                <div class="flex justify-center mb-6">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8bf3283f-7c55-48c4-ab12-6c73e88d0ec8.png" alt="Album cover of Ed Sheeran's Perfect song with romantic sunset backdrop" class="w-40 h-40 rounded-lg shadow-lg" />
+                </div>
+                <audio id="audio-player" src="https://github.com/Rupeshpandey09/koyal-/raw/refs/heads/main/Koyal%20ke%20jaisi%20hai%20teri%20ye%20boli%20%5BD3kaqacQXf4%5D.mp3"></audio>
+                <div class="progress-bar">
+                    <div class="progress" id="progress-bar"></div>
+                </div>
+                <div class="flex justify-between text-sm text-pink-100 mb-6">
+                    <span id="current-time">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+                <div class="flex justify-center gap-6">
+                    <button class="player-btn text-white text-2xl" id="prev-btn">⏮</button>
+                    <button class="player-btn bg-white text-pink-600 w-12 h-12 rounded-full flex items-center justify-center text-xl" id="play-btn">▶</button>
+                    <button class="player-btn text-white text-2xl" id="next-btn">⏭</button>
+                </div>
+                <div class="playlist mt-8">
+                    <div class="playlist-item bg-white bg-opacity-20 p-3 rounded-lg mb-2 cursor-pointer" data-src="https://github.com/Rupeshpandey09/bahut-pyar/raw/refs/heads/main/Bahut%20Pyar%20Karte%20Hain%20(New%20Lyrics)%20FULL%20VERSION%20-%20JalRaj%20_%20New%20Hindi%20Covers%20_%2090s%20Songs%20%5BMykfQyqQuJ4%5D.mp3" data-title="Perfect" data-artist="Ed Sheeran">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="font-medium">Bahut Pyar</p>
+                                <p class="text-sm text-pink-100">Saajan</p>
+                            </div>
+                            <span class="text-pink-100">3:30</span>
+                        </div>
+                    </div>
+                    <div class="playlist-item bg-white bg-opacity-20 p-3 rounded-lg mb-2 cursor-pointer" data-src="https://github.com/Rupeshpandey09/mai-tenu/raw/refs/heads/main/Main%20Tenu%20Samjhawan%20ki%20whatsapp%20status_Arijit%20Singh%E2%99%A5%EF%B8%8Flove%20Song%20Status%E2%99%A5%EF%B8%8F_Samjhawan%20whatsapp%20status%20%5B9_7b77BOBVY%5D.mp3" data-title="All of Me" data-artist="John Legend">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="font-medium">mai tenu</p>
+                                <p class="text-sm text-pink-100">Arjit singh</p>
+                            </div>
+                            <span class="text-pink-100">4:29</span>
+                        </div>
+                    </div>
+                    <div class="playlist-item bg-white bg-opacity-20 p-3 rounded-lg mb-2 cursor-pointer" data-src="https://github.com/Rupeshpandey09/tohre-me-base/raw/refs/heads/main/TOHRE%20ME%20BASE%20RANI%20HAMRO%20PARANWA%20HO%20-%20Male%20Version%20%20Viral%20Song%20%20Raksh%20Music%20-%20Raksh%20Music.mp3" data-title="A Thousand Years" data-artist="Tohre me base">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="font-medium">Tohre me base</p>
+                                <p class="text-sm text-pink-100">rakesh</p>
+                            </div>
+                            <span class="text-pink-100">4:45</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold dancing-font mb-6">Happy Birthday My Love</h2>
+            <p class="mb-6">Every day with you is a celebration, but today is extra special.</p>
+            <div class="flex justify-center gap-4 mb-8">
+                <a href="#" class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center text-white hover:bg-pink-500 transition duration-300">
+                    <span class="sr-only">Facebook</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                    </svg>
+                </a>
+                <a href="#" class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center text-white hover:bg-pink-500 transition duration-300">
+                    <span class="sr-only">Instagram</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+                    </svg>
+                </a>
+                <a href="#" class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center text-white hover:bg-pink-500 transition duration-300">
+                    <span class="sr-only">Twitter</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+                    </svg>
+                </a>
+            </div>
+            <p class="text-pink-300">© <span id="year"></span> Made with ❤ for you</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Gift box functionality
+        function showGiftContent(boxNumber) {
+            document.getElementById(`gift${boxNumber}-content`).classList.add('show');
+        }
+        
+        function hideGiftContent(boxNumber) {
+            document.getElementById(`gift${boxNumber}-content`).classList.remove('show');
+        }
+        
+        // Close gift content when clicking outside
+        document.addEventListener('click', function(event) {
+            const gifts = document.querySelectorAll('.gift-box-content');
+            gifts.forEach(gift => {
+                if (!gift.contains(event.target) && !event.target.closest('.gift-box')) {
+                    gift.classList.remove('show');
+                }
+            });
+        }, {capture: true});
+
+        // Create floating hearts
+        function createHearts() {
+            const container = document.getElementById('hearts-container');
+            const numHearts = 15;
+            
+            for (let i = 0; i < numHearts; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                
+                // Random properties
+                const size = Math.random() * 15 + 10;
+                const posX = Math.random() * window.innerWidth;
+                const posY = Math.random() * window.innerHeight;
+                const delay = Math.random() * 15;
+                const duration = Math.random() * 10 + 10;
+                const opacity = Math.random() * 0.5 + 0.3;
+                
+                heart.style.width = `${size}px`;
+                heart.style.height = `${size}px`;
+                heart.style.left = `${posX}px`;
+                heart.style.top = `${posY}px`;
+                heart.style.animationDelay = `${delay}s`;
+                heart.style.animationDuration = `${duration}s`;
+                heart.style.opacity = opacity;
+                
+                container.appendChild(heart);
+            }
+        }
+        
+        // Typewriter effect for the text
+        function typeWriter() {
+            const textElement = document.getElementById('typed-text');
+            const nameElement = document.getElementById('name-display');
+            
+            new Typewriter(nameElement, {
+                strings: ['My Love', 'My Angel', 'My Everything'],
+                autoStart: true,
+                loop: true,
+                cursor: '',
+                delay: 50,
+                deleteSpeed: 30
+            });
+            
+            new Typewriter(textElement, {
+                strings: [
+                    'Today we celebrate you, the most amazing person in my life.',
+                    'Every moment with you is a treasure I cherish deeply.',
+                    'Your love makes my world brighter every single day.'
+                ],
+                autoStart: true,
+                loop: true,
+                delay: 50,
+                deleteSpeed: 20
+            });
+        }
+        
+        // Music player functionality
+        function setupMusicPlayer() {
+            const player = document.getElementById('audio-player');
+            const playBtn = document.getElementById('play-btn');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const progressBar = document.getElementById('progress-bar');
+            const currentTimeEl = document.getElementById('current-time');
+            const durationEl = document.getElementById('duration');
+            const songTitle = document.getElementById('song-title');
+            const songArtist = document.getElementById('song-artist');
+            const playlistItems = document.querySelectorAll('.playlist-item');
+            
+            let isPlaying = false;
+            
+            // Play/pause toggle
+            function togglePlay() {
+                if (isPlaying) {
+                    player.pause();
+                    playBtn.textContent = '▶';
+                } else {
+                    player.play();
+                    playBtn.textContent = '❚❚';
+                }
+                isPlaying = !isPlaying;
+            }
+            
+            // Update progress bar
+            function updateProgress() {
+                const { duration, currentTime } = player;
+                const progressPercent = (currentTime / duration) * 100;
+                progressBar.style.width = `${progressPercent}%`;
+                
+                // Update time display
+                const formatTime = (time) => {
+                    const minutes = Math.floor(time / 60);
+                    const seconds = Math.floor(time % 60);
+                    return `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+                };
+                
+                currentTimeEl.textContent = formatTime(currentTime);
+                
+                if (!isNaN(duration)) {
+                    durationEl.textContent = formatTime(duration);
+                }
+            }
+            
+            // Set progress
+            function setProgress(e) {
+                const width = this.clientWidth;
+                const clickX = e.offsetX;
+                const duration = player.duration;
+                player.currentTime = (clickX / width) * duration;
+            }
+            
+            // Change song
+            function changeSong(songSrc, title, artist) {
+                player.src = songSrc;
+                songTitle.textContent = title;
+                songArtist.textContent = artist;
+                
+                if (isPlaying) {
+                    player.play();
+                }
+            }
+            
+            // Event listeners
+            playBtn.addEventListener('click', togglePlay);
+            player.addEventListener('timeupdate', updateProgress);
+            player.addEventListener('ended', () => {
+                playBtn.textContent = '▶';
+                isPlaying = false;
+            });
+            progressBar.parentElement.addEventListener('click', setProgress);
+            
+            playlistItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const src = item.getAttribute('data-src');
+                    const title = item.getAttribute('data-title');
+                    const artist = item.getAttribute('data-artist');
+                    changeSong(src, title, artist);
+                    
+                    // Update active state
+                    playlistItems.forEach(i => i.classList.remove('bg-pink-600'));
+                    item.classList.add('bg-pink-600');
+                });
+            });
+            
+            // Simulate next/prev buttons
+            nextBtn.addEventListener('click', () => {
+                const current = document.querySelector('.playlist-item.bg-pink-600');
+                let next = current ? current.nextElementSibling : playlistItems[0];
+                
+                if (!next) {
+                    next = playlistItems[0];
+                }
+                
+                const src = next.getAttribute('data-src');
+                const title = next.getAttribute('data-title');
+                const artist = next.getAttribute('data-artist');
+                changeSong(src, title, artist);
+                
+                playlistItems.forEach(i => i.classList.remove('bg-pink-600'));
+                next.classList.add('bg-pink-600');
+            });
+            
+            prevBtn.addEventListener('click', () => {
+                const current = document.querySelector('.playlist-item.bg-pink-600');
+                let prev = current ? current.previousElementSibling : playlistItems[playlistItems.length - 1];
+                
+                if (!prev) {
+                    prev = playlistItems[playlistItems.length - 1];
+                }
+                
+                const src = prev.getAttribute('data-src');
+                const title = prev.getAttribute('data-title');
+                const artist = prev.getAttribute('data-artist');
+                changeSong(src, title, artist);
+                
+                playlistItems.forEach(i => i.classList.remove('bg-pink-600'));
+                prev.classList.add('bg-pink-600');
+            });
+        }
+        
+        // Smooth scrolling
+        function setupSmoothScrolling() {
+            document.getElementById('scroll-down').addEventListener('click', () => {
+                document.querySelectorAll('section')[1].scrollIntoView({ behavior: 'smooth' });
+            });
+        }
+        
+        // Set current year in footer
+        function setCurrentYear() {
+            document.getElementById('year').textContent = new Date().getFullYear();
+        }
+        
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            createHearts();
+            typeWriter();
+            setupMusicPlayer();
+            setupSmoothScrolling();
+            setCurrentYear();
+            
+            // Initialize gift boxes
+            document.querySelectorAll('.gift-box').forEach((box, index) => {
+                box.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    showGiftContent(index + 1);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
